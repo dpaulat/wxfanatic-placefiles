@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Line Color</title>
+    <script>
+
+    function hexToRgb(hex) {
+    const bigint = parseInt(hex.substring(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `${r}-${g}-${b}`;
+}
+
+    function generateLink() {
+    const color = document.getElementById('color').value;
+    const thickness = document.getElementById('thickness').value;
+    const rgb = hexToRgb(color);
+    const linkElem = document.getElementById('generatedLink');
+    linkElem.href = `md_lines.php?color=${encodeURIComponent(rgb)}&thickness=${thickness}`;
+    linkElem.textContent = linkElem.href;
+}
+
+    </script>
+</head>
+<body>
+    <label for="color">Choose a line color for Mesoscale Discussions:</label>
+    <input type="color" id="color" name="color" value="#FF8C00" onchange="generateLink()">
+    <br><br>
+    <label for="thickness">Choose the line thickness:</label>
+    <input type="number" id="thickness" name="thickness" value="3" min="1" onchange="generateLink()">
+    <br><br>
+    Generated link: <a id="generatedLink" href="#" target="_blank">[Placefile link will appear here]</a>
+</body>
+</html>
