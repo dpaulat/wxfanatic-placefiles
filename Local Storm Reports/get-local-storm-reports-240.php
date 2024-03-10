@@ -16,7 +16,7 @@ function genPlacefile() {
     $output = "Refresh: 5\n";
     $output .= "Threshold: 999\n";
     $output .= "Title: IEM Local Storm Reports - Last 4 Hrs\n";
-    $output .= "Font: 1, 24, 0, \"Courier New\"\n\n";
+    $output .= "Font: 1, 15, 0, \"Courier New\"\n\n";
 
     $lsrs = fetchLSRJson();
 
