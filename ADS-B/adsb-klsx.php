@@ -10,14 +10,14 @@ function genPlacefile() {
     $output .= ";Credit: adsb.one for the API / flaticon.com for the icon\n";
     $output .= "RefreshSeconds: 15\n";
     $output .= "Threshold: 999\n";
-    $output .= "Title: ADSB Aircraft (adsb.one) - Tallahassee, FL 250nm\n";
+    $output .= "Title: ADSB Aircraft (adsb.one) - St Louis, MO 250nm\n";
     $output .= "Font: 1, 16, 0, \"Alte DIN 1451 Mittelschrift\"\n";
 
     // Add IconFile statement at the beginning
     $output .= "IconFile: 1, 32, 32, 16, 16, \"images/miniplane.png\"\n\n";
 
     // Define the API endpoint.
-    $api_endpoint = "https://api.adsb.one/v2/point/30.39/-84.35/250"; // 250nm Tallahassee, FL
+    $api_endpoint = "https://api.adsb.one/v2/point/38.6989/-90.6828/250"; // 250nm KLSX
 
     // Fetch the data from the API
     $raw_data = file_get_contents($api_endpoint);
@@ -71,13 +71,13 @@ function genPlacefile() {
         . "\\nADS-B Version: $version"
         . "\\nRSSI: $rssi"
         . "\"\n";
-        $output .= "Text: 0,-20,0,\"$flight\"\n"; // Position text above the icon
+        $output .= "Text: 0,-20,1,\"$flight\"\n"; // Position text above the icon
         $output .= "End:\n"; // End of composite object
 
     }
 
-    // Write to adsb-ktlh.txt
-    file_put_contents('adsb-ktlh.txt', $output);
+    // Write to adsb-klsx.txt
+    file_put_contents('adsb-klsx.txt', $output);
 }
 
 genPlacefile();
