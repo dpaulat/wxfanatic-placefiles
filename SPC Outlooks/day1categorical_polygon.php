@@ -1,5 +1,5 @@
 <?php
-require('./WeatherFunctions.php');
+require('WeatherFunctions.php');
 header('Content-Type: text/plain');
 $BaseUrl = 'https://www.spc.noaa.gov';
 $day1outlookurl = "https://www.spc.noaa.gov/products/outlook/day1otlk.html";
