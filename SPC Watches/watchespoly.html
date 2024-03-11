@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Polygon Color</title>
+    <script>
+
+    function hexToRgb(hex) {
+    const bigint = parseInt(hex.substring(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `${r}-${g}-${b}`;
+}
+
+    function generateLink() {
+    const torcolor = document.getElementById('torcolor').value;
+    const toropacity = document.getElementById('toropacity').value;
+    document.getElementById('toropacityValue').textContent = Math.round((toropacity/255)*100) + '%';
+
+    const svrcolor = document.getElementById('svrcolor').value;
+    const svropacity = document.getElementById('svropacity').value;
+    document.getElementById('svropacityValue').textContent = Math.round((svropacity/255)*100) + '%';
+
+    const torrgb = hexToRgb(torcolor);
+    const svrrgb = hexToRgb(svrcolor);
+
+    const linkElem = document.getElementById('generatedLink');
+    linkElem.href = `watch_polygon.php?torcolor=${encodeURIComponent(torrgb + '-' + toropacity)}&svrcolor=${encodeURIComponent(svrrgb + '-' + svropacity)}`;
+    linkElem.textContent = linkElem.href;
+}
+
+    </script>
+</head>
+<body>
+
+    <h3>Tornado Watches:</h3>
+    <label for="torcolor">Choose a polygon color:</label>
+    <input type="color" id="torcolor" name="torcolor" value="#FF0000" onchange="generateLink()">
+    <br>
+    <label for="toropacity">Choose opacity:</label>
+    <input type="range" id="toropacity" name="toropacity" min="0" max="255" value="127" onchange="generateLink()">
+    <span id="toropacityValue">50%</span>
+    <br><br>
+
+    <h3>Severe Thunderstorm Watches:</h3>
+    <label for="svrcolor">Choose a polygon color:</label>
+    <input type="color" id="svrcolor" name="svrcolor" value="#0000FF" onchange="generateLink()">
+    <br>
+    <label for="svropacity">Choose opacity:</label>
+    <input type="range" id="svropacity" name="svropacity" min="0" max="255" value="127" onchange="generateLink()">
+    <span id="svropacityValue">50%</span>
+    <br><br>
+
+    Generated link: <a id="generatedLink" href="#" target="_blank">[Placefile link will appear here]</a>
+</body>
+</html>
