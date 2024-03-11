@@ -91,7 +91,8 @@ foreach ($MDMatches[1] as $MD) {
             break;
         }
 
-        if (strpos($line, "Mesoscale Discussion") !== false && !in_array($line, $popupContent)) {
+        // Add the "Mesoscale Discussion #" title to $popupContent only once
+        if (strpos($line, "Mesoscale Discussion") !== false && empty($popupContent)) {
             $popupContent[] = $line;
             continue;
         }
@@ -110,6 +111,7 @@ foreach ($MDMatches[1] as $MD) {
         }
     }
 
+    // Add a newline character after each element
     $popupText = implode("\\n", $popupContent);
 
     if (count($GPS) > 1) {
