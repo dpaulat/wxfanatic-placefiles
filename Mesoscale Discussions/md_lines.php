@@ -116,7 +116,7 @@ foreach ($MDMatches[1] as $MD) {
 
     if (count($GPS) > 1) {
         $PlacefileText .= ";MD Number: $MD\n";
-        $PlacefileText .= "Line: 5, 0, \"" . $popupText . "\"\n";
+        $PlacefileText .= "Line: $thickness, 0, \"" . $popupText . "\"\n";
         foreach ($GPS as $coord) {
             $PlacefileText .= LatLon($coord) . "\n";
         }
