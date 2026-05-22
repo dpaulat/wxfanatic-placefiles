@@ -3,8 +3,8 @@
 date_default_timezone_set('UTC');
 
 function fetchLSRJson() { // Shows last 4 hours of LSR's
-    $fourHoursAgo = date("YmdHis", strtotime("-4 hours"));
-    $today = date("YmdHis");
+    $fourHoursAgo = date("YmdHi", strtotime("-4 hours"));
+    $today = date("YmdHi");
 
     $jsonUrl = "https://mesonet.agron.iastate.edu/geojson/lsr.php?sts={$fourHoursAgo}&ets={$today}";
     $jsonContent = file_get_contents($jsonUrl);
