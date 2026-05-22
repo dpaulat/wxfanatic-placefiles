@@ -7,17 +7,17 @@ error_reporting(E_ALL);
 function genPlacefile() {
     $output = ""; // Initialize the variable
 
-    $output .= ";Credit: adsb.one for the API / flaticon.com for the icon\n";
+    $output .= ";Credit: airplanes.live for the API / flaticon.com for the icon\n";
     $output .= "RefreshSeconds: 15\n";
     $output .= "Threshold: 999\n";
-    $output .= "Title: ADSB Aircraft (adsb.one) - Tallahassee, FL 250nm\n";
+    $output .= "Title: ADSB Aircraft (airplanes.live) - Tallahassee, FL 250nm\n";
     $output .= "Font: 1, 16, 0, \"Alte DIN 1451 Mittelschrift\"\n";
 
     // Add IconFile statement at the beginning
     $output .= "IconFile: 1, 32, 32, 16, 16, \"images/miniplane.png\"\n\n";
 
     // Define the API endpoint.
-    $api_endpoint = "https://api.adsb.one/v2/point/30.39/-84.35/250"; // 250nm Tallahassee, FL
+    $api_endpoint = "https://api.airplanes.live/v2/point/30.39/-84.35/250"; // 250nm Tallahassee, FL
 
     // Fetch the data from the API
     $raw_data = file_get_contents($api_endpoint);
