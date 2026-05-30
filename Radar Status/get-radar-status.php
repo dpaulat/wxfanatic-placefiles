@@ -2,8 +2,9 @@
 $url = 'https://api.weather.gov/radar/stations';
 $context = stream_context_create([
     'http' => [
-        'method' => 'GET',
-        'header' => 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0'
+        'method'  => 'GET',
+        'header'  => 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
+        'timeout' => 10 // Set a timeout for the request
     ]
 ]);
 
